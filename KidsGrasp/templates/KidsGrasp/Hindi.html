@@ -1,0 +1,78 @@
+{% extends 'KidsGrasp/Header.html' %}
+{% load staticfiles %}
+{% block head %}
+<title>Hindi</title>
+{% endblock %}
+
+{% block body %}
+<br/>
+<button type="button" style="width:100%;font-size:50px;" class="btn btn-danger">Hindi</button>
+<br/><br/>
+<style>
+@keyframes imageanimate {
+    0% {width:10px; height:10px;}
+    50% {width:400px; height:400px;}
+    100% {width:10px; height:10px;}
+}
+@-webkit-keyframes imageanimate {
+    0% {width:10px; height:10px;}
+    50% {width:400px; height:400px;}
+    100% {width:10px; height:10px;}
+}
+#image{
+    animation : imageanimate 6s infinite;
+}
+</style>
+<div class="jumbotron jumbotron-fluid">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<img src="../../static/Hindi/1.jpg" id="image" width="100%" height="100%"/>
+</div>
+<div class="col-md-8" style="font-size:100px;text-align:center;">
+<span id="text">अ से अनार</span>
+</div>
+</div>
+<br/>
+<div class="row">
+<div class="col-md-6">
+<button type="button" style="width:100%;font-size:20px;" class="btn btn-success" onclick="changeAlphabetPrev()">Previous</button>
+</div>
+<div class="col-md-6">
+<button type="button" style="width:100%;font-size:20px;" class="btn btn-danger" onclick="changeAlphabetNext()">Next</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+var i=0;
+var data=[
+    ["../../static/Hindi/1.jpg","अ से अनार"],
+    ["../../static/Hindi/2.jpg","आ से आम"],
+    ["../../static/Hindi/3.jpg","इ से इमली"],
+    ["../../static/Hindi/4.jpg","ई से ईख"],
+    ["../../static/Hindi/5.jpg","उ से उल्लू"],
+    ["../../static/Hindi/6.jpg","ऊ से ऊन"],
+    ["../../static/Hindi/7.jpg","ए से एड़ी"],
+    ["../../static/Hindi/8.jpg","ऐ से ऐनक"],
+    ["../../static/Hindi/9.jpg","ओ से ओखली"],
+    ["../../static/Hindi/10.jpg","औ से औरत"],
+    ["../../static/Hindi/11.jpg","अं से अंगूर"],
+    ["../../static/Hindi/12.jpg","अ: दो बिंदी"]
+];
+function changeAlphabetNext(){
+    if(i<11){
+        i++;
+        document.getElementById("image").src=data[i][0];
+        document.getElementById("text").innerHTML=data[i][1];
+    }
+}
+function changeAlphabetPrev(){
+    if(i>0){
+        i--;
+        document.getElementById("image").src=data[i][0];
+        document.getElementById("text").innerHTML=data[i][1];
+    }
+}
+</script>
+{% endblock %}

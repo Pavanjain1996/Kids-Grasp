@@ -1,0 +1,106 @@
+{% extends 'KidsGrasp/Header.html' %}
+{% load staticfiles %}
+{% block head %}
+<title>Calculator</title>
+{% endblock %}
+
+{% block body %}
+<br/>
+<button type="button" style="width:100%;font-size:50px;" class="btn btn-danger">Calculator</button>
+<br/><br/>
+<div class="jumbotron jumbotron-fluid">
+<div class="container">
+<div class="row">
+<button type="button" style="width:97px;height:100px;font-size:60px;" class="btn btn-success" value="1" onclick="printNumber(this.value)">1</button>&emsp;&emsp;
+<button type="button" style="width:97px;height:100px;font-size:60px;" class="btn btn-success" value="2" onclick="printNumber(this.value)">2</button>&emsp;&emsp;
+<button type="button" style="width:97px;height:100px;font-size:60px;" class="btn btn-success" value="3" onclick="printNumber(this.value)">3</button>&emsp;&emsp;
+<button type="button" style="width:97px;height:100px;font-size:60px;" class="btn btn-success" value="4" onclick="printNumber(this.value)">4</button>&emsp;&emsp;
+<button type="button" style="width:97px;height:100px;font-size:60px;" class="btn btn-success" value="5" onclick="printNumber(this.value)">5</button>&emsp;&emsp;
+<button type="button" style="width:97px;height:100px;font-size:60px;" class="btn btn-success" value="6" onclick="printNumber(this.value)">6</button>&emsp;&emsp;
+<button type="button" style="width:97px;height:100px;font-size:60px;" class="btn btn-success" value="7" onclick="printNumber(this.value)">7</button>&emsp;&emsp;
+<button type="button" style="width:97px;height:100px;font-size:60px;" class="btn btn-success" value="8" onclick="printNumber(this.value)">8</button>&emsp;&emsp;
+<button type="button" style="width:97px;height:100px;font-size:60px;" class="btn btn-success" value="9" onclick="printNumber(this.value)">9</button>
+</div>
+<br/>
+<div class="row">
+<div class="col-md-1"></div>
+<div class="col-md-2">
+<button type="button" style="width:97px;height:100px;font-size:60px;" class="btn btn-primary" id="op1"></button>
+</div>
+<div class="col-md-2">
+<button type="button" style="width:97px;height:100px;font-size:60px;" class="btn btn-primary" id="operand"></button>
+</div>
+<div class="col-md-2">
+<button type="button" style="width:97px;height:100px;font-size:60px;" class="btn btn-primary" id="op2"></button>
+</div>
+<div class="col-md-2">
+<button type="button" style="width:97px;height:100px;font-size:60px;" class="btn btn-primary" onclick="findAnswer()">=</button>
+</div>
+<div class="col-md-2">
+<button type="button" style="width:97px;height:100px;font-size:60px;" class="btn btn-primary" id="res"></button>
+</div>
+<div class="col-md-1"></div>
+</div>
+<br/>
+<div class="row">
+<div class="col-md-3">
+<button type="button" style="width:200px;height:120px;font-size:60px;" class="btn btn-warning" value="+" onclick="printOperator(this.value)">+</button>
+</div>
+<div class="col-md-3">
+<button type="button" style="width:200px;height:120px;font-size:60px;" class="btn btn-warning" value="-" onclick="printOperator(this.value)">-</button>
+</div>
+<div class="col-md-3">
+<button type="button" style="width:200px;height:120px;font-size:60px;" class="btn btn-warning" value="x" onclick="printOperator(this.value)">x</button>
+</div>
+<div class="col-md-3">
+<button type="button" style="width:200px;height:120px;font-size:60px;" class="btn btn-warning" value="÷" onclick="printOperator(this.value)">÷</button>
+</div>
+</div>
+<br/>
+<div class="row">
+<button type="button" style="width:100%;font-size:20px;" class="btn btn-danger" onclick="clearField()">Clear all Fields</button>
+</div>
+</div>
+</div>
+<script>
+function printNumber(val){
+    if(document.getElementById("op1").value == ""){
+        document.getElementById("op1").value=val;
+        document.getElementById("op1").innerHTML=val;
+    }
+    else{
+        document.getElementById("op2").value=val;
+        document.getElementById("op2").innerHTML=val;
+    }
+}
+function printOperator(ope){
+    document.getElementById("operand").value=ope;
+    document.getElementById("operand").innerHTML=ope;
+}
+function findAnswer(){
+    var a = parseInt(document.getElementById("op1").value);
+    var b = parseInt(document.getElementById("op2").value);
+    var c = document.getElementById("operand").value;
+    var d;
+    if(c=="+")
+        d=a+b;
+    else if(c=="-")
+        d=a-b;
+    else if(c=="x")
+        d=a*b;
+    else
+        d=parseInt(a/b);
+    document.getElementById("res").innerHTML=d;
+}
+function clearField(){
+    document.getElementById("op1").innerHTML="";
+    document.getElementById("op2").innerHTML="";
+    document.getElementById("operand").innerHTML="";
+    document.getElementById("res").innerHTML="";
+    document.getElementById("op1").value="";
+    document.getElementById("op2").value="";
+    document.getElementById("operand").value="";
+    document.getElementById("res").value="";
+}
+</script>
+{% endblock %}
